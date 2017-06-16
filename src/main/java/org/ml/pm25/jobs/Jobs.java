@@ -17,7 +17,7 @@ public class Jobs {
 	private SpiderCrawlDao spiderCrawlDao;
 	@Autowired
 	private SpiderService spiderService;
-	@Scheduled(cron="0 0/1 * * * ?")
+	@Scheduled(cron="0 0/59 * * * ?")
 	public void cronJob(){
 		List<String> list = spiderCrawlDao.queryCityCode();
 		if(CollectionUtils.isEmpty(list)){
@@ -25,12 +25,9 @@ public class Jobs {
 			return;
 		}
 		logger.info("开始定时任务");
-//		int i=0;
 		for(String str : list){
 			try {
 				spiderService.crawlData(str);
-//				i++;
-//				logger.info("code："+str+"	i："+i);
 			} catch (Exception e) {
 				e.printStackTrace();
 				logger.error(e.getMessage(), e);
