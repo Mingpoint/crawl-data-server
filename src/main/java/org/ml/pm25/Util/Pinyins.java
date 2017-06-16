@@ -1,5 +1,7 @@
 package org.ml.pm25.Util;
 
+import org.apache.log4j.Logger;
+
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
@@ -8,6 +10,7 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
 public class Pinyins {
+	private static Logger logger = Logger.getLogger(Pinyins.class);
 
     /** 
      * 将文字转为汉语拼音
@@ -29,7 +32,7 @@ public class Pinyins {
                 }
             }
         } catch (BadHanyuPinyinOutputFormatCombination e) {
-            System.out.println("字符不能转成汉语拼音");
+            logger.error(e.getMessage(), e);
         }
         return hanyupinyin;
     }
@@ -62,7 +65,7 @@ public class Pinyins {
                 }
             }
         } catch (BadHanyuPinyinOutputFormatCombination e) {
-            System.out.println("字符不能转成汉语拼音");
+        	 logger.error(e.getMessage(), e);
         }
         return hanyupinyin;
     }
@@ -88,7 +91,7 @@ public class Pinyins {
                 }
             }
         } catch (BadHanyuPinyinOutputFormatCombination e) {
-            System.out.println("字符不能转成汉语拼音");
+        	 logger.error(e.getMessage(), e);
         }
         return hanyupinyin;
     }
@@ -119,7 +122,7 @@ public class Pinyins {
 
             }
         } catch (BadHanyuPinyinOutputFormatCombination e) {
-            System.out.println("字符不能转成汉语拼音");
+        	 logger.error(e.getMessage(), e);
         }
         return hanyupinyin;
     }

@@ -32,14 +32,6 @@ public class SpiderCrawl implements PageProcessor{
 		if(null != aqi && !("".equals(aqi))) info.setAqi(Integer.parseInt(aqi.trim()));
 		if(null != pm25 && !("".equals(pm25))) info.setPm25(Integer.parseInt(pm25.trim()));
 		page.putField("pm25Info", info);
-//		System.out.println("name=="+name);
-//		System.out.println("state=="+state);
-//		System.out.println("details=="+detailsurl);
-//		System.out.println("aqi=="+aqi);
-//		System.out.println("pm25=="+pm25);
 	}
-//	public static void main(String[] args) {
-//        Spider.create(new SpiderCrawl()).addUrl("http://www.pm25.com/beijing.html").thread(5).run();
-//	}
 
 }
