@@ -3,6 +3,7 @@ package org.ml.pm25.jobs;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.ml.pm25.activemq.provider.ProviderMQ;
 import org.ml.pm25.dao.SpiderCrawlDao;
 import org.ml.pm25.service.SpiderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ public class Jobs {
 	@Autowired
 	private SpiderCrawlDao spiderCrawlDao;
 	@Autowired
-	private SpiderService spiderService;
-	@Scheduled(cron="0 0/59 * * * ?")
+	private ProviderMQ providerMQ;
+	@Scheduled(cron="0 0/1 * * * ?")
 	public void cronJob(){
 		List<String> list = spiderCrawlDao.queryCityCode();
 		if(CollectionUtils.isEmpty(list)){
@@ -27,7 +28,7 @@ public class Jobs {
 		logger.info("开始定时任务");
 		for(String str : list){
 			try {
-				spiderService.crawlData(str);
+				providerMQ.sendMessage(str);
 			} catch (Exception e) {
 				e.printStackTrace();
 				logger.error(e.getMessage(), e);

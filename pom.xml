@@ -80,6 +80,15 @@
             <artifactId>druid</artifactId>
             <version>1.0.31</version>
         </dependency>
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-activemq</artifactId>
+        </dependency>
+         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.3.2</version>
+		</dependency>
   </dependencies>
   <build>
     <finalName>crawl-data-server</finalName>
